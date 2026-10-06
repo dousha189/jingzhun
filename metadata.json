@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix 出海多语种AI坐席助手 (Global Copilot)",
+  "description": "基于Dify+RAG+通义千问/DeepSeek/Ollama的出海多语种AI坐席协同系统，具备实时翻译建议草稿、RAG切片治理、黄金问答评测集、模型分层路由及Token成本监控。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
