@@ -44,8 +44,8 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
   externalDraftToInsert
 }) => {
   const [inputText, setInputText] = useState('');
-  const [inputMode, setInputMode] = useState<'direct' | 'chinese_translate'>('direct');
-  const [chineseInput, setChineseInput] = useState('');
+  const [inputMode, setInputMode] = useState<'direct' | 'english_translate'>('direct');
+  const [englishInput, setEnglishInput] = useState('');
   const [showAssetDetails, setShowAssetDetails] = useState(true);
   const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
 
@@ -96,17 +96,17 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
   };
 
   const handleSend = () => {
-    const textToSend = inputMode === 'chinese_translate' ? inputText || chineseInput : inputText;
+    const textToSend = inputMode === 'english_translate' ? inputText || englishInput : inputText;
     if (!textToSend.trim()) return;
 
     const isAi = !!(
       (ticket.currentAiDraft && textToSend.includes(ticket.currentAiDraft.originalDraftTargetLang.slice(0, 30))) ||
-      inputMode === 'chinese_translate'
+      inputMode === 'english_translate'
     );
 
     onSendMessage(textToSend.trim(), isAi);
     setInputText('');
-    setChineseInput('');
+    setEnglishInput('');
   };
 
   // Keyboard shortcut: Enter to send, Shift+Enter for new line
@@ -254,11 +254,11 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
     setInputMode('direct');
   };
 
-  // Simulated auto-translation when agent types in Chinese
-  const handleChineseInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const zh = e.target.value;
-    setChineseInput(zh);
-    if (!zh.trim()) {
+  // Simulated auto-translation when agent types in English
+  const handleEnglishInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const en = e.target.value;
+    setEnglishInput(en);
+    if (!en.trim()) {
       setInputText('');
       return;
     }
@@ -266,19 +266,19 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
     // Smart simulated translation to target customer language
     if (ticket.language === 'pl') {
       setInputText(
-        `Dzień dobry, w odniesieniu do Pańskiego zgłoszenia: ${zh} (Przetłumaczono przez Precision AI)`
+        `Dzień dobry, w odniesieniu do Pańskiego zgłoszenia: ${en} (Przetłumaczono przez Precision AI)`
       );
     } else if (ticket.language === 'es') {
       setInputText(
-        `Estimado cliente, con respecto a su consulta: ${zh} (Traducido por Precision AI)`
+        `Estimado cliente, con respecto a su consulta: ${en} (Traducido por Precision AI)`
       );
     } else if (ticket.language === 'tr') {
       setInputText(
-        `Merhaba, talebinizle ilgili olarak: ${zh} (Precision AI ile çevrildi)`
+        `Merhaba, talebinizle ilgili olarak: ${en} (Precision AI ile çevrildi)`
       );
     } else {
       setInputText(
-        `Dear customer, regarding your request: ${zh} (Translated by Precision AI)`
+        `Dear customer, regarding your request: ${en} (Translated by Precision AI)`
       );
     }
   };
@@ -592,27 +592,27 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
               直接编辑外语
             </button>
             <button
-              onClick={() => setInputMode('chinese_translate')}
+              onClick={() => setInputMode('english_translate')}
               className={`px-2 py-0.5 rounded transition flex items-center gap-1 cursor-pointer ${
-                inputMode === 'chinese_translate' ? 'bg-white text-teal-800 font-semibold shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                inputMode === 'english_translate' ? 'bg-white text-teal-800 font-semibold shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Languages className="w-3 h-3 text-teal-600" />
-              中文输入转外语
+              英文输入转外语
             </button>
           </div>
         </div>
 
         {/* Dynamic Composer based on Input Mode */}
-        {inputMode === 'chinese_translate' ? (
+        {inputMode === 'english_translate' ? (
           <div className="space-y-2">
             <div>
               <textarea
                 rows={2}
-                value={chineseInput}
-                onChange={handleChineseInputChange}
+                value={englishInput}
+                onChange={handleEnglishInputChange}
                 onKeyDown={handleKeyDown}
-                placeholder="在此直接输入中文回复内容，按 Enter 快速发送，系统将自动调用多语言引擎转为客户母语..."
+                placeholder="在此直接输入英文回复内容，按 Enter 快速发送，系统将自动调用多语言引擎转为客户母语..."
                 className="w-full bg-slate-50 border border-teal-300 rounded-lg p-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white resize-none font-sans"
               />
             </div>
@@ -648,7 +648,7 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
 
           <button
             onClick={handleSend}
-            disabled={!(inputText.trim() || chineseInput.trim())}
+            disabled={!(inputText.trim() || englishInput.trim())}
             className="px-4 py-1.5 bg-teal-600 hover:bg-teal-700 disabled:opacity-40 disabled:hover:bg-teal-600 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition shadow-xs cursor-pointer"
           >
             <Send className="w-3.5 h-3.5" />

@@ -41,7 +41,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
   const [activeSideTab, setActiveSideTab] = useState<'draft' | 'sop' | 'search' | 'handover'>('draft');
   const [copied, setCopied] = useState(false);
   const [showRejectModal, setShowRejectModal] = useState(false);
-  const [rejectionReason, setRejectionReason] = useState('太生硬，缺少本土客服温度');
+  const [rejectionReason, setRejectionReason] = useState('Too rigid, lacks localized service warmth');
   const [isSimulatingLowScore, setIsSimulatingLowScore] = useState(false);
   const [quickSearchQuery, setQuickSearchQuery] = useState('');
   const [handoverNoteText, setHandoverNoteText] = useState(ticket.handoverNotes || '');
@@ -81,13 +81,13 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
             </div>
             <div>
               <h3 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                Copilot 智能坐席助手
+                Copilot Agent Assistant
                 <span className="text-[10px] text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200 font-mono font-medium">
-                  人审兜底
+                  Human-in-the-Loop
                 </span>
               </h3>
               <span className="text-[10px] text-slate-500 block font-mono">
-                模型: {draft?.modelName || 'DeepSeek-V3 多语言引擎'}
+                Model: {draft?.modelName || 'DeepSeek-V3 Multilingual Engine'}
               </span>
             </div>
           </div>
@@ -95,14 +95,14 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
           {/* Test <0.7 toggle for interviews/demos */}
           <button
             onClick={() => setIsSimulatingLowScore(!isSimulatingLowScore)}
-            title="测试阈值：模拟检索相似度低于0.7触发第二层安全防线拦截"
+            title="Threshold Test: Simulate retrieval similarity below 0.7 to trigger 2nd defense line"
             className={`text-[10px] px-2 py-0.5 rounded border transition flex items-center gap-1 ${
               isSimulatingLowScore
                 ? 'bg-rose-50 text-rose-700 border-rose-300 font-bold'
                 : 'bg-slate-100 text-slate-600 border-slate-200 hover:text-slate-900'
             }`}
           >
-            {isSimulatingLowScore ? '已模拟<0.7' : '测试<0.7阈值'}
+            {isSimulatingLowScore ? 'Simulating <0.7' : 'Test <0.7 Threshold'}
           </button>
         </div>
 
@@ -116,7 +116,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            💡 AI回复草稿
+            💡 AI Reply Draft
           </button>
           <button
             onClick={() => setActiveSideTab('sop')}
@@ -126,7 +126,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            📋 SOP办理指南
+            📋 SOP Guide
           </button>
           <button
             onClick={() => setActiveSideTab('search')}
@@ -136,7 +136,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            🔍 知识库速查
+            🔍 Knowledge Search
           </button>
           <button
             onClick={() => setActiveSideTab('handover')}
@@ -146,7 +146,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            🌙 交接备忘
+            🌙 Shift Handover
           </button>
         </div>
       </div>
@@ -157,7 +157,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
           {!draft ? (
             <div className="p-6 text-center text-slate-400 text-xs">
               <Sparkles className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-              暂无AI建议草稿，正在检索匹配...
+              No AI suggestion draft yet, retrieving knowledge...
             </div>
           ) : (
             <>
@@ -171,7 +171,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500">检索相似度:</span>
+                    <span className="text-slate-500">Retrieval Similarity:</span>
                     <span className={`font-mono font-bold text-xs ${isBelowThreshold ? 'text-rose-600' : 'text-teal-700'}`}>
                       {(currentConfidence * 100).toFixed(0)}%
                     </span>
@@ -186,20 +186,20 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                     />
                   </div>
                   <div className="text-[10px] text-slate-500 mt-1">
-                    {isBelowThreshold ? '⚠️ 低于0.7硬约束阈值' : '✅ 达到高置信度(≥0.7)'}
+                    {isBelowThreshold ? '⚠️ Below 0.7 Hard Constraint' : '✅ High Confidence (≥0.7)'}
                   </div>
                 </div>
 
                 <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 flex flex-col justify-between">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-500">合规/红线拦截:</span>
+                    <span className="text-slate-500">Compliance & Safety:</span>
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   </div>
                   <div className="w-full bg-emerald-100 h-1.5 rounded-full overflow-hidden mt-1.5">
                     <div className="h-full rounded-full bg-emerald-500 w-full" />
                   </div>
                   <div className="text-[10px] text-emerald-700 font-medium mt-1">
-                    100% 通过合规核验
+                    100% Passed Check
                   </div>
                 </div>
               </div>
@@ -209,21 +209,21 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 text-xs leading-relaxed space-y-2">
                   <div className="flex items-center gap-2 font-bold text-rose-700 text-sm">
                     <ShieldAlert className="w-4 h-4" />
-                    触发四层防幻觉之第二层：低置信度直接转人工
+                    Layer 2 Triggered: Low Confidence Escalate to Human
                   </div>
                   <p>
-                    本问题经BGE多语言向量检索，与客户知识库最高相似度为{' '}
-                    <strong>{(currentConfidence * 100).toFixed(0)}%</strong>，低于系统设定的{' '}
-                    <strong>0.70</strong> 黄金阈值。
+                    Through multilingual vector retrieval, similarity with knowledge base is{' '}
+                    <strong>{(currentConfidence * 100).toFixed(0)}%</strong>, below the{' '}
+                    <strong>0.70</strong> threshold.
                   </p>
                   <p className="text-[11px] text-rose-800 bg-white/80 p-2 rounded border border-rose-200">
-                    坚持“知识库为唯一答案源，大模型不凭空推断”，系统已自动隐藏AI回复草稿，防止品牌虚假承诺风险，建议坐席转交二线工程师。
+                    Rule enforced: "Knowledge base is the sole source of truth; LLM does not speculate." AI draft hidden to prevent unverified warranty commitments. Escalate to tier-2 engineer.
                   </p>
                   <button
                     onClick={() => setIsSimulatingLowScore(false)}
                     className="w-full mt-2 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded text-xs font-semibold transition shadow-xs"
                   >
-                    恢复正常高置信度 (0.88+) 演示
+                    Restore High Confidence (0.88+) Demo
                   </button>
                 </div>
               ) : (
@@ -233,14 +233,14 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[11px] font-bold text-teal-800 flex items-center gap-1.5">
                         <MessageSquare className="w-3.5 h-3.5 text-teal-600" />
-                        AI回复草稿 (目标语种: {ticket.language.toUpperCase()})
+                        AI Reply Draft (Target Language: {ticket.language.toUpperCase()})
                       </span>
                       <button
                         onClick={() => handleCopy(draft.originalDraftTargetLang)}
                         className="text-[10px] text-slate-600 hover:text-slate-900 flex items-center gap-1 px-1.5 py-0.5 rounded bg-white border border-slate-200 shadow-2xs transition"
                       >
                         {copied ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                        {copied ? '已复制' : '复制外文'}
+                        {copied ? 'Copied' : 'Copy Text'}
                       </button>
                     </div>
 
@@ -249,12 +249,12 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                     </div>
                   </div>
 
-                  {/* AI Draft in Agent Mother Tongue (Chinese Translation) */}
+                  {/* AI Draft in Agent Reference Language (English Translation) */}
                   <div className="rounded-xl bg-slate-50 border border-slate-200 p-3 shadow-2xs">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-[11px] font-bold text-sky-800 flex items-center gap-1.5">
                         <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-                        草稿中文对照 (坐席母语实时互译)
+                        Draft English Reference (Real-time Cross Translation)
                       </span>
                     </div>
                     <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto shadow-2xs">
@@ -267,9 +267,9 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[11px] font-bold text-amber-800 flex items-center gap-1.5">
                         <BookOpen className="w-3.5 h-3.5 text-amber-600" />
-                        知识溯源引用 ({draft.citations.length}处依据)
+                        Knowledge Grounding Citations ({draft.citations.length} Sources)
                       </span>
-                      <span className="text-[10px] text-slate-400">点击卡片看原文</span>
+                      <span className="text-[10px] text-slate-400">Click to view source</span>
                     </div>
 
                     <div className="space-y-1.5">
@@ -284,7 +284,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                               [{index + 1}] {cite.docTitle}
                             </span>
                             <span className="font-mono text-[10px] text-teal-700 font-bold bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200">
-                              {(cite.similarityScore * 100).toFixed(0)}% 匹配
+                              {(cite.similarityScore * 100).toFixed(0)}% Match
                             </span>
                           </div>
                           <div className="text-[10px] text-amber-700 truncate font-mono">
@@ -302,7 +302,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                   <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-slate-500 flex items-start gap-1.5">
                     <Info className="w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" />
                     <span>
-                      发送给客户的回复若含AI生成内容，内部系统标记但客户无感知，便于质检追踪。
+                      Replies containing AI-generated content are tagged internally for QA audit while invisible to customers.
                     </span>
                   </div>
 
@@ -314,7 +314,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                         className="py-2.5 px-3 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-md transition active:scale-98 cursor-pointer"
                       >
                         <CheckCircle className="w-4 h-4" />
-                        一键采纳并发送
+                        Adopt & Send
                       </button>
 
                       <button
@@ -322,7 +322,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                         className="py-2.5 px-3 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-98 shadow-2xs cursor-pointer"
                       >
                         <Edit3 className="w-4 h-4 text-sky-600" />
-                        编辑后采纳
+                        Edit & Adopt
                       </button>
                     </div>
 
@@ -331,7 +331,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                       className="w-full py-1.5 px-3 bg-white hover:bg-rose-50 text-slate-600 hover:text-rose-700 border border-slate-200 hover:border-rose-300 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 transition cursor-pointer"
                     >
                       <XCircle className="w-3.5 h-3.5 text-rose-500" />
-                      拒绝并反馈原因 (回流调优Prompt)
+                      Reject with Reason (Feed into Prompt Optimization)
                     </button>
                   </div>
                 </>
@@ -345,7 +345,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
       {activeSideTab === 'sop' && (
         <div className="flex-1 overflow-y-auto p-4 space-y-3 text-xs">
           <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="text-slate-500 text-[11px] block">当前工单标准化SOP分类:</span>
+            <span className="text-slate-500 text-[11px] block">Current Ticket Standardized SOP:</span>
             <span className="font-bold text-slate-900 text-sm mt-0.5 block">{ticket.sopCategory}</span>
           </div>
 
@@ -363,17 +363,17 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
               >
                 <div className="flex items-center justify-between font-bold">
                   <span className={idx === ticket.currentSopIndex ? 'text-teal-900' : 'text-slate-900'}>
-                    第 {step.stepNumber} 步：{step.title}
+                    Step {step.stepNumber}: {step.title}
                   </span>
                   {step.isCompleted ? (
-                    <span className="text-[10px] text-emerald-700 font-mono">已完成</span>
+                    <span className="text-[10px] text-emerald-700 font-mono">Completed</span>
                   ) : (
-                    <span className="text-[10px] text-amber-700 font-mono">待处理</span>
+                    <span className="text-[10px] text-amber-700 font-mono">Pending</span>
                   )}
                 </div>
                 <p className="text-slate-600 text-[11px] leading-relaxed">{step.description}</p>
                 <div className="p-2 bg-white rounded border border-slate-200 text-[11px] text-teal-800 font-medium">
-                  💡 坐席操作建议: {step.actionRecommendation}
+                  💡 Agent Recommendation: {step.actionRecommendation}
                 </div>
               </div>
             ))}
@@ -388,7 +388,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
             <input
               type="text"
-              placeholder="搜索产品手册、错误码21、保修退换条款..."
+              placeholder="Search product manuals, Error Code 21, warranty policies..."
               value={quickSearchQuery}
               onChange={(e) => setQuickSearchQuery(e.target.value)}
               className="w-full bg-slate-50 border border-slate-200 rounded-md pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white"
@@ -397,26 +397,26 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
 
           <div className="space-y-2 pt-1">
             <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 hover:bg-white hover:border-slate-300 cursor-pointer shadow-2xs transition">
-              <span className="text-[10px] text-teal-700 font-mono font-medium">Ninebot Max G30 · 错误代码21</span>
-              <h5 className="font-bold text-slate-900 text-xs mt-0.5">BMS电池管理系统通信异常</h5>
+              <span className="text-[10px] text-teal-700 font-mono font-medium">Ninebot Max G30 · Error Code 21</span>
+              <h5 className="font-bold text-slate-900 text-xs mt-0.5">BMS Battery Communication Failure</h5>
               <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                若出现红色扳手图标，通常系主控与BMS连接线虚接。1年内直接安排DPD寄修，严禁让客户拆卸底板。
+                If red wrench icon flashes, usually loose harness between main controller and BMS. Within 1 year directly arrange DPD mail-in service. Do not instruct user to disassemble.
               </p>
             </div>
 
             <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 hover:bg-white hover:border-slate-300 cursor-pointer shadow-2xs transition">
-              <span className="text-[10px] text-sky-700 font-mono font-medium">Xiaomi Scooter 4 Pro · 西班牙</span>
-              <h5 className="font-bold text-slate-900 text-xs mt-0.5">14天无理由退款与SEUR取件SOP</h5>
+              <span className="text-[10px] text-sky-700 font-mono font-medium">Xiaomi Scooter 4 Pro · Spain</span>
+              <h5 className="font-bold text-slate-900 text-xs mt-0.5">14-Day Return & SEUR Pickup SOP</h5>
               <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                必须原包装箱齐全且无撞击痕迹，下发SEUR回邮单，仓库验货合格后48小时退款。
+                Original packaging required with no signs of crash. Issue SEUR return label; refund automatically approved within 48h after inspection.
               </p>
             </div>
 
             <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 hover:bg-white hover:border-slate-300 cursor-pointer shadow-2xs transition">
-              <span className="text-[10px] text-amber-700 font-mono font-medium">Niu KQi3 · 土耳其合规</span>
-              <h5 className="font-bold text-slate-900 text-xs mt-0.5">严禁解限速与破解免责条例</h5>
+              <span className="text-[10px] text-amber-700 font-mono font-medium">Niu KQi3 · Turkey Compliance</span>
+              <h5 className="font-bold text-slate-900 text-xs mt-0.5">Anti-Speed Hack & Liability Disclaimer</h5>
               <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
-                严格遵守当地25km/h法定交规，严禁提供工程模式密码或刷机教程，违者追责。
+                Strict adherence to 25km/h statutory regulations. Strictly prohibited to share engineering passwords or flashing tutorials.
               </p>
             </div>
           </div>
@@ -427,17 +427,17 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
       {activeSideTab === 'handover' && (
         <div className="flex-1 overflow-y-auto p-4 space-y-3 text-xs">
           <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="text-slate-500 text-[11px] block">交接班目标基地:</span>
-            <span className="font-bold text-slate-900 text-sm mt-0.5 block">吉隆坡交付中心 (夜班 20:00-08:00)</span>
+            <span className="text-slate-500 text-[11px] block">Target Handover Base:</span>
+            <span className="font-bold text-slate-900 text-sm mt-0.5 block">Kuala Lumpur Delivery Center (Night Shift 20:00-08:00)</span>
           </div>
 
           <div>
-            <label className="text-slate-700 font-semibold block mb-1">本工单交接备忘与待办事项:</label>
+            <label className="text-slate-700 font-semibold block mb-1">Ticket Handover Memo & Pending Actions:</label>
             <textarea
               rows={6}
               value={handoverNoteText}
               onChange={(e) => setHandoverNoteText(e.target.value)}
-              placeholder="请输入留给接班坐席的上下文要点（例如：已索要发票，夜班收到后请下发DPD运单）..."
+              placeholder="Enter context notes for night-shift agents (e.g., invoice requested, please issue DPD label once received)..."
               className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:bg-white font-sans leading-relaxed resize-none"
             />
           </div>
@@ -445,7 +445,7 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
           {handoverSaved && (
             <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] flex items-center gap-2 animate-in fade-in duration-150">
               <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>交接备忘已成功保存并同步至吉隆坡夜班接班流！</span>
+              <span>Handover memo saved and synced to Kuala Lumpur night-shift queue!</span>
             </div>
           )}
 
@@ -456,10 +456,10 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
             {handoverSaved ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span>已同步至吉隆坡夜班</span>
+                <span>Synced to KL Night Shift</span>
               </>
             ) : (
-              <span>保存并同步至吉隆坡夜班接班流</span>
+              <span>Save & Sync to Kuala Lumpur Shift Flow</span>
             )}
           </button>
         </div>
@@ -471,20 +471,20 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
           <div className="bg-white border border-slate-200 rounded-xl p-5 max-w-sm w-full text-slate-800 shadow-2xl space-y-4">
             <div className="flex items-center gap-2 text-rose-600 font-bold text-sm">
               <ThumbsDown className="w-4 h-4" />
-              反馈拒绝原因 (回流至Prompt与切片优化池)
+              Feedback on Rejection (Feed into Prompt & Chunk Pool)
             </div>
 
             <p className="text-xs text-slate-500 leading-relaxed">
-              您的反馈将作为每周回归测试的重要样本，帮助AI产品经理优化Prompt四步结构与知识库切片：
+              Your feedback serves as a key regression test sample helping AI product managers optimize prompt structure and knowledge chunks:
             </p>
 
             <div className="space-y-1.5 text-xs">
               {[
-                '太生硬，缺少本土客服温度',
-                '解决方案不够具体，缺少关键配件编码',
-                '与客户当前型号版本不完全匹配',
-                '遗漏了当地物流商(如SEUR/DPD)关键信息',
-                '语气过于官方，未体现先同理心道歉'
+                'Too rigid, lacks localized service warmth',
+                'Solution lacks specific parts code or clear steps',
+                'Does not fully match customer hardware revision',
+                'Missing local carrier details (e.g., SEUR/DPD)',
+                'Tone too formal, missing empathetic opening apology'
               ].map((reason) => (
                 <label
                   key={reason}
@@ -507,13 +507,13 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 onClick={() => setShowRejectModal(false)}
                 className="px-3 py-1.5 rounded text-xs text-slate-500 hover:text-slate-800"
               >
-                取消
+                Cancel
               </button>
               <button
                 onClick={handleConfirmReject}
                 className="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded text-xs font-semibold transition shadow-xs"
               >
-                确认提交并回流数据
+                Submit Feedback
               </button>
             </div>
           </div>

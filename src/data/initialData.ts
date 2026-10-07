@@ -89,71 +89,71 @@ export const INITIAL_TICKETS: Ticket[] = [
       id: 'draft-pl-01',
       ticketId: 'TK-2026-9042',
       modelUsed: 'deepseek_v3',
-      modelName: 'DeepSeek-V3 (小语种专属分层路由引擎)',
+      modelName: 'DeepSeek-V3 (Specialized Tiered Routing for Minor Languages)',
       confidenceScore: 0.88,
       isBelowThreshold: false,
       originalDraftTargetLang: 'Dzień dobry Panie Mateuszu,\n\nDziękujemy za szczegółowy opis problemu do zgłoszenia TK-2026-9042. Błąd 21 oznacza nieprawidłową komunikację z płytą BMS baterii [1]. Ponieważ Pana urządzenie (Ninebot Max G30) znajduje się w okresie 24-miesięcznej europejskiej gwarancji, kwalifikuje się do bezpłatnej weryfikacji serwisowej [2].\n\nAby uruchomić procedurę door-to-door w Polsce, prosimy o przesłanie:\n1. Kopii dowodu zakupu (paragon lub faktura z MediaMarkt)\n2. Dokładnego adresu odbioru dla kuriera DPD\n3. Informacji, czy aplikacja Segway-Ninebot wykrywa hulajnogę przez Bluetooth.\n\nPo otrzymaniu powyższych materiałów wyślemy opłaconą etykietę przewozową DPD w ciągu 24 godzin [2].',
-      translatedDraftAgentLang: '尊敬的Mateusz先生，您好：\n\n感谢您补充工单 TK-2026-9042 的故障详情。错误代码21表示电池BMS管理板通信异常 [1]。鉴于您的设备（Ninebot Max G30）仍在欧洲24个月官方质保期内，符合官方保修检测条件 [2]。\n\n为协助您启动波兰本地Door-to-Door DPD上门取件流程，请向我们提供：\n1. 购买凭证复印件（MediaMarkt发票或收据）\n2. DPD快递员上门取件的详细波兰地址\n3. Segway-Ninebot手机App当前是否仍可通过蓝牙搜索到车辆。\n\n我们将在收到上述材料后24小时内为您下发DPD预付费寄修运单 [2]。',
+      translatedDraftAgentLang: 'Dear Mr. Mateusz, hello:\n\nThank you for providing the issue details for ticket TK-2026-9042. Error Code 21 indicates abnormal communication with the battery BMS board [1]. As your device (Ninebot Max G30) is within the European 24-month official warranty period, it qualifies for free warranty inspection [2].\n\nTo initiate the local Door-to-Door DPD pickup process in Poland, please provide us with:\n1. Copy of proof of purchase (MediaMarkt invoice or receipt)\n2. Detailed pickup address in Poland for the DPD courier\n3. Whether the Segway-Ninebot app can still detect the vehicle via Bluetooth.\n\nWe will issue a prepaid DPD shipping label to you within 24 hours upon receiving the above materials [2].',
       citations: [
         {
           id: 'cite-01',
-          docTitle: '九号电动滑板车Max G30欧洲版售后维修手册 v3.2',
-          docCategory: '故障代码',
+          docTitle: 'Ninebot KickScooter Max G30 European Edition Service Manual v3.2',
+          docCategory: 'Error Codes',
           clientBrand: 'Ninebot Segway',
-          section: '第4章 · 核心电气故障码排查 §4.2.1 错误代码21 (BMS异常)',
+          section: 'Chapter 4 · Core Electrical Troubleshooting §4.2.1 Error Code 21 (BMS Fault)',
           chunkId: 'chunk-segway-err21-512',
-          chunkContent: '【切片512token】错误代码21定义：电池管理系统(BMS)与主控器通信超时或电压信号异常。若伴随红色扳手图标，通常为BMS通信线松动或电芯单体压差保护。欧洲用户处理规范：非人为进水前提下，整车享受2年质保，电池享受1年质保。对购买1年内非进水报障，直接启动本地授权服务商(如波兰Asbis/DPD)上门寄修流程，不得要求客户自行拆机。',
+          chunkContent: '[Chunk 512 tokens] Error Code 21 definition: Battery Management System (BMS) communication timeout or voltage signal abnormality with the main controller. If accompanied by a red wrench icon, it is usually a loose BMS wire harness or cell differential voltage protection. European user handling standard: Under non-accidental water damage conditions, the complete vehicle enjoys a 2-year warranty and battery enjoys 1 year. For reports within 1 year without water damage, directly initiate authorized local service provider (e.g., Asbis/DPD Poland) mail-in repair process. Do not instruct customers to disassemble by themselves.',
           similarityScore: 0.91,
-          highlightSnippet: '错误代码21定义：电池管理系统(BMS)与主控器通信超时... 对购买1年内非进水报障，直接启动本地授权服务商上门寄修流程。'
+          highlightSnippet: 'Error Code 21 definition: Battery Management System (BMS) communication timeout... For issues within 1 year without water damage, directly initiate authorized local service provider mail-in repair.'
         },
         {
           id: 'cite-02',
-          docTitle: '九号欧洲大区质保政策及争议免责条款 (2025新版)',
-          docCategory: '保修政策',
+          docTitle: 'Ninebot European Region Warranty Policy & Liability Terms (2025 Edition)',
+          docCategory: 'Warranty Policy',
           clientBrand: 'Ninebot Segway',
-          section: '第2章 · 波兰/捷克/斯洛伐克本地化寄修服务SOP',
+          section: 'Chapter 2 · Poland/Czech/Slovakia Localized Mail-in Repair SOP',
           chunkId: 'chunk-segway-pl-warranty',
-          chunkContent: '【切片512token】在波兰地区通过合规渠道（MediaMarkt, Euro RTV AGD, Allegro官方旗舰店）购买的个人微出行产品，保修凭证需包含机器SN码和发票日期。客服在确认购买凭证及SN后，可下发DPD预付费电子运单，维修周期承诺为收到货物后5个工作日。',
+          chunkContent: '[Chunk 512 tokens] For micro-mobility products purchased in Poland through compliant channels (MediaMarkt, Euro RTV AGD, Allegro Official Flagship Store), warranty proof requires machine serial number and invoice date. After confirming proof of purchase and SN, customer service can issue a DPD prepaid electronic airway bill, with a committed repair turnaround of 5 business days upon receiving goods.',
           similarityScore: 0.85,
-          highlightSnippet: '客服在确认购买凭证及SN后，可下发DPD预付费电子运单，维修周期承诺为收到货物后5个工作日。'
+          highlightSnippet: 'After confirming proof of purchase and SN, customer service can issue a DPD prepaid electronic airway bill with a committed turnaround of 5 business days.'
         }
       ],
       compliancePassed: true,
       sensitiveCheckPassed: true,
-      suggestedAction: '已完成SN码与客户四要素收集并生成工单号TK-2026-9042；当前进入排障阶段，建议核验MediaMarkt发票并下发DPD回邮单。',
+      suggestedAction: 'Customer info & SN collected and ticket #TK-2026-9042 created; now in troubleshooting stage. Verify MediaMarkt invoice and issue DPD return label.',
       createdAt: '14:18',
       status: 'pending'
     },
-    sopCategory: '欧洲大区九号滑板车保修寄修SOP (11类标准流程之一)',
+    sopCategory: 'European Region Ninebot Scooter Warranty Mail-in Repair SOP (1 of 11 Standard Procedures)',
     sopSteps: [
       {
         stepNumber: 1,
-        title: 'SN码与信息收集',
-        description: '客户进线后先收集姓名、手机号、邮箱、SN码（不全则追问），收集齐全后创建工单并生成工单号返给客户，核验保修期后再排障',
+        title: 'SN Code & Information Collection',
+        description: 'Collect customer name, phone number, email, and SN upon incoming inquiry (follow up if incomplete). Once fully collected, create ticket and return ticket number to customer, verify warranty status, then proceed to troubleshooting.',
         isCompleted: true,
-        requiredFields: ['姓名', '手机号', '邮箱', 'SN码'],
-        actionRecommendation: '已收齐四要素（姓名/手机号/邮箱/SN码），已创建工单 TK-2026-9042 并告知客户机型 Ninebot Max G30 在保，已询问具体故障。'
+        requiredFields: ['Name', 'Phone', 'Email', 'SN Code'],
+        actionRecommendation: 'All 4 elements collected (Name/Phone/Email/SN). Ticket TK-2026-9042 created; customer notified that Ninebot Max G30 is under warranty; specific issue queried.'
       },
       {
         stepNumber: 2,
-        title: '故障代码与知识库比对',
-        description: '比对错误代码21处置方案，确认属于非人为免责范围',
+        title: 'Error Code & Knowledge Base Matching',
+        description: 'Match Error Code 21 handling policy and confirm it is within non-accidental warranty coverage.',
         isCompleted: true,
-        actionRecommendation: '错误代码21属于BMS通讯告警，需引导寄修换板，严禁指导用户自行拆电芯。'
+        actionRecommendation: 'Error Code 21 is a BMS communication warning. Guide user to mail-in repair for board replacement; strictly prohibit self-disassembly of battery cells.'
       },
       {
         stepNumber: 3,
-        title: '购买凭证与上门地址索取',
-        description: '向客户索要发票照片与DPD取件地址，校验购买渠道合规性',
+        title: 'Proof of Purchase & Pickup Address Request',
+        description: 'Request invoice photo and DPD pickup address from customer; verify purchasing channel compliance.',
         isCompleted: false,
-        actionRecommendation: '当前待客户回复MediaMarkt发票与详细地址。'
+        actionRecommendation: 'Currently awaiting customer response with MediaMarkt invoice and detailed address.'
       },
       {
         stepNumber: 4,
-        title: 'DPD预付费运单生成与工单归档',
-        description: '对接欧洲本地物流API生成寄修Label，推送客户邮箱并同步波兰维修站',
+        title: 'DPD Prepaid Shipping Label Generation & Ticket Archive',
+        description: 'Call European local logistics API to generate return label, email to customer, and sync with Poland service station.',
         isCompleted: false,
-        actionRecommendation: '获取地址后触发系统Webhook自动派单。'
+        actionRecommendation: 'Trigger system webhook auto-dispatch upon address receipt.'
       }
     ],
     currentSopIndex: 2
@@ -199,53 +199,53 @@ export const INITIAL_TICKETS: Ticket[] = [
       id: 'draft-es-01',
       ticketId: 'TK-2026-9043',
       modelUsed: 'qwen_max',
-      modelName: '通义千问 Qwen-Max (欧美大语种高稳定性分层路由)',
+      modelName: 'Qwen-Max (Tiered High-Stability Routing for Major European Languages)',
       confidenceScore: 0.92,
       isBelowThreshold: false,
       originalDraftTargetLang: 'Hola Carlos,\n\nPara poder ayudarle y crear una orden de servicio que facilite el seguimiento posterior, por favor proporciónenos el código SN de su patinete eléctrico, su número de teléfono, correo electrónico y nombre completo [1].\n\nUna vez verificada la información y el estado de garantía de su modelo, procederemos de inmediato con el diagnóstico y solución.',
-      translatedDraftAgentLang: '您好，请提供您电车的SN码、您的手机号、邮箱、姓名，以便我为您创建工单方便后续跟踪 [1]。\n\n待核实您的车型与保修期状态后，我们将立即为您进行故障排查与处理。',
+      translatedDraftAgentLang: 'Hello, please provide your scooter SN, phone number, email address, and name so that I can create a service ticket for follow-up tracking [1].\n\nOnce your model and warranty status are verified, we will immediately proceed with troubleshooting and resolution.',
       citations: [
         {
           id: 'cite-es-01',
-          docTitle: '小米海外电商欧洲售后退换货与退款规程 2025版',
-          docCategory: '退换货SOP',
+          docTitle: 'Xiaomi Overseas E-commerce Europe After-Sales Return & Refund SOP (2025 Edition)',
+          docCategory: 'Return SOP',
           clientBrand: 'Xiaomi Global',
-          section: '第1节 · 进线前置SN码与信息收集建单规范',
+          section: 'Section 1 · Pre-inquiry SN & Information Collection Ticket Creation Standard',
           chunkId: 'chunk-xiaomi-es-return-14d',
-          chunkContent: '【切片512token】客户进线报障时，客服需优先收集客户姓名、手机号、邮箱及车辆SN码。若信息不全需主动追问，收齐四要素后创建工单并将工单号返回给客户，同步告知查询到的车型及保修状态，随后再进入具体故障排查或SEUR退换货流程。',
+          chunkContent: '[Chunk 512 tokens] When a customer contacts for troubleshooting, customer service should prioritize collecting customer name, phone number, email, and scooter SN. If information is incomplete, proactively follow up. Once all four elements are collected, create a ticket, return the ticket number to customer, inform vehicle model and warranty status, then proceed with troubleshooting or SEUR returns.',
           similarityScore: 0.94,
-          highlightSnippet: '客户进线报障时，客服需优先收集客户姓名、手机号、邮箱及车辆SN码，收齐后创建工单并将工单号返给客户，再排障。'
+          highlightSnippet: 'Prioritize collecting customer name, phone number, email, and scooter SN. Once all elements are collected, create ticket and return ticket number before troubleshooting.'
         }
       ],
       compliancePassed: true,
       sensitiveCheckPassed: true,
-      suggestedAction: '客户进线仅提供了姓名和邮箱，缺少手机号与电车SN码，建议优先追问补齐四要素后再创建工单排障。',
+      suggestedAction: 'Customer only provided name and email; missing phone and scooter SN. Recommend prioritizing information collection before creating ticket and troubleshooting.',
       createdAt: '13:52',
       status: 'pending'
     },
-    sopCategory: '小米海外标准售后服务与退换货SOP',
+    sopCategory: 'Xiaomi Overseas Standard After-Sales Service & Return SOP',
     sopSteps: [
       {
         stepNumber: 1,
-        title: 'SN码与信息收集',
-        description: '客户进线后先收集客户姓名、手机号、邮箱、SN码，若信息不全进线追问，收集齐全后创建工单并生成工单号返给客户',
+        title: 'SN Code & Information Collection',
+        description: 'Collect customer name, phone number, email, and SN upon incoming inquiry; follow up if incomplete, then create ticket and return ticket number to customer.',
         isCompleted: false,
-        requiredFields: ['姓名', '手机号', '邮箱', 'SN码'],
-        actionRecommendation: '当前缺失【手机号】与【SN码】，请先采纳AI草稿向客户追问收集齐全后再创建工单。'
+        requiredFields: ['Name', 'Phone', 'Email', 'SN Code'],
+        actionRecommendation: 'Currently missing [Phone] and [SN Code]. Please adopt AI draft to request missing info before creating ticket.'
       },
       {
         stepNumber: 2,
-        title: '车型保修反馈与故障排查',
-        description: '返回工单号给客户，告知电车具体型号与保修期状态，询问并排查具体故障问题',
+        title: 'Model Warranty Feedback & Troubleshooting',
+        description: 'Return ticket number to customer, confirm scooter model and warranty period status, and query specific issue.',
         isCompleted: false,
-        actionRecommendation: '待收齐信息并生成工单后推进。'
+        actionRecommendation: 'Proceed after information is collected and ticket created.'
       },
       {
         stepNumber: 3,
-        title: 'SEUR回邮运单推送与售后跟踪',
-        description: '下发欧洲本地物流面单，跟踪后续维修或退换进度',
+        title: 'SEUR Return Waybill Dispatch & Tracking',
+        description: 'Dispatch European local waybill label and monitor repair or refund inspection progress.',
         isCompleted: false,
-        actionRecommendation: '等待排障确认后触发物流预约。'
+        actionRecommendation: 'Schedule logistics pickup once diagnosis confirmed.'
       }
     ],
     currentSopIndex: 0
