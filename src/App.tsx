@@ -25,7 +25,8 @@ import {
   KnowledgeChunk,
   KnowledgeCitation,
   AiDraftSuggestion,
-  BaseLocation
+  BaseLocation,
+  CustomerInfo
 } from './types';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
@@ -169,6 +170,55 @@ export default function App() {
     showToast('SOP 标准流程节点已顺利推进！');
   };
 
+  // 6. Update Customer Info & Create Ticket
+  const handleUpdateCustomerInfo = (
+    ticketId: string,
+    info: CustomerInfo,
+    autoReply?: { original: string; translated: string }
+  ) => {
+    setTickets((prev) =>
+      prev.map((t) => {
+        if (t.id === ticketId) {
+          const updatedSteps = t.sopSteps.map((s, idx) =>
+            idx === 0
+              ? {
+                  ...s,
+                  isCompleted: true,
+                  actionRecommendation: `已收齐四要素（姓名/手机号/邮箱/SN码），已创建工单 ${t.id} 并告知客户机型在保，已询问具体故障。`
+                }
+              : s
+          );
+          const newMessages = autoReply
+            ? [
+                ...t.messages,
+                {
+                  id: `msg-agent-${Date.now()}`,
+                  sender: 'agent' as const,
+                  senderName: '董亚旗 (石家庄/A-2048)',
+                  timestamp: new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }),
+                  language: t.language,
+                  originalText: autoReply.original,
+                  translatedText: autoReply.translated,
+                  isAiAssisted: true,
+                  adoptedFromAi: true
+                }
+              ]
+            : t.messages;
+
+          return {
+            ...t,
+            customerInfo: info,
+            sopSteps: updatedSteps,
+            currentSopIndex: Math.max(t.currentSopIndex, 1),
+            messages: newMessages
+          };
+        }
+        return t;
+      })
+    );
+    showToast(`已收齐客户四要素并创建工单 ${ticketId}，已向客户返回工单号与在保机型信息！`);
+  };
+
   return (
     <div className="flex flex-col h-screen w-screen bg-slate-100/70 font-sans antialiased text-slate-800 overflow-hidden select-none">
       {/* Frontline Agent Top Navigation Bar */}
@@ -215,6 +265,7 @@ export default function App() {
               ticket={currentTicket}
               onSendMessage={handleSendMessage}
               onAdvanceSopStep={handleAdvanceSopStep}
+              onUpdateCustomerInfo={handleUpdateCustomerInfo}
               externalDraftToInsert={externalDraftToInsert}
             />
             <CopilotPanel

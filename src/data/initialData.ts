@@ -42,7 +42,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:10',
         language: 'pl',
         originalText: 'Dzień dobry, moja hulajnoga elektryczna ma problem i nie może jechać.',
-        translatedText: '【系统自动翻译】你好，我的电车出了问题无法行驶。',
+        translatedText: '[System Auto-Translation] Hello, my electric scooter has an issue and cannot run.',
       },
       {
         id: 'msg-2',
@@ -51,7 +51,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:11',
         language: 'pl',
         originalText: 'Dzień dobry! Proszę o podanie numeru seryjnego (SN) hulajnogi, numeru telefonu, adresu e-mail oraz imienia i nazwiska, abym mógł utworzyć dla Pana zgłoszenie serwisowe ułatwiające dalsze śledzenie sprawy.',
-        translatedText: '您好，请提供您电车的SN码、您的手机号、邮箱、姓名，以便我为您创建工单方便后续跟踪。',
+        translatedText: 'Hello, please provide your scooter SN, phone number, email address, and name so that I can create a service ticket for follow-up tracking.',
         isAiAssisted: true,
         adoptedFromAi: true
       },
@@ -62,7 +62,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:14',
         language: 'pl',
         originalText: 'Nazywam się Mateusz Wiśniewski, mój numer telefonu to +48 501 234 567, e-mail to usr_mateusz_w@onet.pl, a numer SN hulajnogi to N4GDC2104C1289.',
-        translatedText: '【系统自动翻译】我的姓名是 Mateusz Wiśniewski，手机号是 +48 501 234 567，邮箱是 usr_mateusz_w@onet.pl，电车SN是 N4GDC2104C1289。',
+        translatedText: '[System Auto-Translation] My name is Mateusz Wiśniewski, phone number is +48 501 234 567, email is usr_mateusz_w@onet.pl, and scooter SN is N4GDC2104C1289.',
       },
       {
         id: 'msg-4',
@@ -71,7 +71,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:15',
         language: 'pl',
         originalText: 'Dobrze, utworzyliśmy dla Pana zgłoszenie serwisowe nr TK-2026-9042. Pana hulajnoga to model Ninebot KickScooter Max G30 i nadal znajduje się w okresie 24-miesięcznej gwarancji. Proszę powiedzieć, jaki dokładnie problem wystąpił?',
-        translatedText: '好的，已为您创建工单（工单号：TK-2026-9042）。您的电车是 Ninebot KickScooter Max G30 型号，目前还在保修期内，请问具体遇到了什么问题？',
+        translatedText: 'Great, we have created service ticket #TK-2026-9042 for you. Your scooter is the Ninebot KickScooter Max G30 model and is currently under warranty. What specific issue are you experiencing?',
         isAiAssisted: true,
         adoptedFromAi: true
       },
@@ -82,7 +82,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:16',
         language: 'pl',
         originalText: 'Hulajnoga kupiona w MediaMarkt w Warszawie nagle przestała jechać. Na wyświetlaczu miga czerwony klucz i błąd 21. Czy to oznacza uszkodzenie baterii? Jak wygląda procedura gwarancyjna w Polsce?',
-        translatedText: '【系统自动翻译】我在华沙MediaMarkt购买的滑板车突然无法行驶。屏幕上闪烁红色扳手和错误代码21。这是否意味着电池损坏？在波兰的保修流程是怎样的？',
+        translatedText: '[System Auto-Translation] The scooter bought at MediaMarkt in Warsaw suddenly stopped working. The screen is flashing a red wrench and error code 21. Does this mean the battery is damaged? What is the warranty procedure in Poland?',
       }
     ],
     currentAiDraft: {
@@ -192,7 +192,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '13:50',
         language: 'es',
         originalText: 'Hola, mi patinete eléctrico Xiaomi tiene un problema en el mástil y no puedo conducirlo con seguridad.',
-        translatedText: '【系统自动翻译】你好，我的小米电车立杆出了问题无法安全行驶。',
+        translatedText: '[System Auto-Translation] Hello, my Xiaomi electric scooter has an issue with the stem and I cannot ride it safely.',
       }
     ],
     currentAiDraft: {
@@ -275,7 +275,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '11:20',
         language: 'tr',
         originalText: 'Merhaba, Niu KQi3 Pro aldım ancak Türkiye yönetmeliğine göre 25 km/s sınırı var. Acaba gizli menüden bu sınırı 32 km/s yapabilir miyim? Yazılımı güncellesem garanti bozulur mu?',
-        translatedText: '【系统自动翻译】你好，我买了小牛KQi3 Pro，但根据土耳其法规有限速25公里/小时。请问我可以从隐藏菜单将速度限制调整到32公里/小时吗？如果我刷机更新固件会影响保修吗？',
+        translatedText: '[System Auto-Translation] Hello, I bought a Niu KQi3 Pro, but according to Turkish regulations there is a 25 km/h limit. Can I adjust this limit to 32 km/h from the hidden menu? If I update or flash the firmware, will it void the warranty?',
       },
       {
         id: 'msg-tr-2',
@@ -284,7 +284,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '11:25',
         language: 'tr',
         originalText: 'Merhaba Sayın Yılmaz, Türkiye yerel trafik mevzuatları gereği araçlarımız yasal hız sınırı olan 25 km/s ile kilitlenmiştir. Resmi olmayan yazılım yüklemeleri veya hız kilidini kırma girişimleri uluslararası garanti şartlarını geçersiz kılar. Güvenliğiniz için orijinal yazılımı kullanmanızı öneririz.',
-        translatedText: '尊敬的Yilmaz先生您好，根据土耳其当地交通法规，我司车辆出厂已严格限制在法定限速25公里/小时。任何非官方固件破解或超速改装行为都将导致整车官方质保失效。为了您的骑行安全，强烈建议保持原厂合规软件。',
+        translatedText: 'Dear Mr. Yılmaz, in accordance with Turkish local traffic regulations, our vehicles are strictly locked to the legal speed limit of 25 km/h from the factory. Any unofficial firmware cracking or modifications will void the official warranty. For your riding safety, we strongly recommend keeping the original firmware.',
         isAiAssisted: true,
         adoptedFromAi: true
       }
@@ -368,7 +368,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:02',
         language: 'fr',
         originalText: 'Bonjour, mon robot aspirateur Xiaomi X20+ acheté sur Fnac il y a 3 semaines indique "Erreur 5: Brosse latérale bloquée". J\'ai retiré les cheveux mais le message persiste. Que faire avant de le renvoyer?',
-        translatedText: '【系统自动翻译】你好，我3周前在Fnac购买的小米扫地机器人X20+提示“错误5：边刷卡死”。我已经清理了缠绕的头发，但错误依然存在。在退货前我还能尝试什么排查步骤吗？',
+        translatedText: '[System Auto-Translation] Hello, my Xiaomi X20+ robot vacuum bought on Fnac 3 weeks ago indicates "Error 5: Side brush blocked". I removed the hair but the message persists. What can I do before sending it back?',
       }
     ],
     currentAiDraft: {
@@ -447,7 +447,7 @@ export const INITIAL_TICKETS: Ticket[] = [
         timestamp: '14:15',
         language: 'en',
         originalText: 'Hi, I received my Segway GT2 rear motor assembly replacement via DHL Express today, but UK Customs charged me £84.20 in import VAT and duty fees! This was an in-warranty replacement ticket RMA#UK-9921. I was promised all expenses paid. Who will reimburse me?',
-        translatedText: '【系统自动翻译】您好，我今天通过DHL Express收到了我的Segway GT2后电机总成更换件，但英国海关向我收取了84.20英镑的进口增值税和关税！这是一个保修期内的更换工单（RMA#UK-9921）。当时承诺全额包税的。谁来报销我的这笔费用？',
+        translatedText: '[System Auto-Translation] Hello, I received my Segway GT2 rear motor assembly replacement via DHL Express today, but UK Customs charged me £84.20 in import VAT and duty fees! This was an in-warranty replacement ticket (RMA#UK-9921). I was promised all expenses paid. Who will reimburse me for this fee?',
       }
     ],
     currentAiDraft: {

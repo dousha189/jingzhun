@@ -153,7 +153,7 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
     // All 4 fields collected -> Create Ticket, return ticket number & model/warranty status, and ask what problem occurred
     let replyOriginal = '';
     const modelShort = ticket.productModel.split(' (')[0];
-    const replyTranslated = `好的，已为您创建工单（工单号：${ticket.id}）。您的电车是 ${modelShort} 型号，目前还在保修期内，请问遇到了什么问题？`;
+    const replyTranslated = `Great, we have created service ticket #${ticket.id} for you. Your scooter is the ${modelShort} model and is currently under warranty. What specific issue are you experiencing?`;
 
     if (ticket.language === 'pl') {
       replyOriginal = `Dobrze, utworzyliśmy dla Pana zgłoszenie serwisowe nr ${ticket.id}. Pana pojazd to model ${modelShort} i nadal znajduje się w okresie gwarancyjnym. Proszę powiedzieć, jaki problem wystąpił?`;
@@ -522,13 +522,13 @@ export const ChatConversation: React.FC<ChatConversationProps> = ({
                     <div className="flex items-center justify-between text-[10px] text-teal-700 font-semibold mb-1">
                       <div className="flex items-center gap-1">
                         <Sparkles className="w-3 h-3 text-teal-600" />
-                        <span>多语种互译引擎 (客户母语 ➔ 坐席中文母语):</span>
+                        <span>多语种互译引擎 (客户母语 ➔ 英文):</span>
                       </div>
                       <button
-                        onClick={() => handleCopyMessage(`${msg.id}-zh`, msg.translatedText || '')}
+                        onClick={() => handleCopyMessage(`${msg.id}-en`, msg.translatedText || '')}
                         className="text-slate-400 hover:text-teal-700 text-[10px] font-normal cursor-pointer"
                       >
-                        {copiedMsgId === `${msg.id}-zh` ? '已复制中文' : '复制中文'}
+                        {copiedMsgId === `${msg.id}-en` ? '已复制英文' : '复制英文'}
                       </button>
                     </div>
                     <div className="text-slate-800 text-xs font-sans leading-relaxed">
