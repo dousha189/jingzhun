@@ -82,28 +82,12 @@ export const CopilotPanel: React.FC<CopilotPanelProps> = ({
             <div>
               <h3 className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
                 Copilot Agent Assistant
-                <span className="text-[10px] text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200 font-mono font-medium">
-                  Human-in-the-Loop
-                </span>
               </h3>
               <span className="text-[10px] text-slate-500 block font-mono">
                 Model: {draft?.modelName || 'DeepSeek-V3 Multilingual Engine'}
               </span>
             </div>
           </div>
-
-          {/* Test <0.7 toggle for interviews/demos */}
-          <button
-            onClick={() => setIsSimulatingLowScore(!isSimulatingLowScore)}
-            title="Threshold Test: Simulate retrieval similarity below 0.7 to trigger 2nd defense line"
-            className={`text-[10px] px-2 py-0.5 rounded border transition flex items-center gap-1 ${
-              isSimulatingLowScore
-                ? 'bg-rose-50 text-rose-700 border-rose-300 font-bold'
-                : 'bg-slate-100 text-slate-600 border-slate-200 hover:text-slate-900'
-            }`}
-          >
-            {isSimulatingLowScore ? 'Simulating <0.7' : 'Test <0.7 Threshold'}
-          </button>
         </div>
 
         {/* 4 Agent Sub-Tabs */}

@@ -77,20 +77,6 @@ export const Header: React.FC<HeaderProps> = ({
       icon: ArrowRightLeft,
       badge: '石家庄 ➔ 吉隆坡',
       badgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200'
-    },
-    {
-      id: 'pm_console' as TopNavTab,
-      label: 'PM设计与治理中枢',
-      icon: Settings,
-      badge: 'RAG·评测·路由',
-      badgeClass: 'bg-amber-50 text-amber-800 border-amber-200'
-    },
-    {
-      id: 'interview' as TopNavTab,
-      label: 'STAR面试答辩架构全书',
-      icon: HelpCircle,
-      badge: '高频20问',
-      badgeClass: 'bg-purple-50 text-purple-700 border-purple-200'
     }
   ];
 
@@ -163,37 +149,6 @@ export const Header: React.FC<HeaderProps> = ({
                 ))}
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Center: Agent Real-Time Quantitative Performance */}
-        <div className="hidden xl:flex items-center gap-4 px-3 py-1 bg-slate-50 rounded-lg border border-slate-200 text-[11px]">
-          <div className="flex items-center gap-1.5" title="今日个人结单数量与班组日标达成率">
-            <span className="text-slate-500">今日结单:</span>
-            <span className="font-mono font-bold text-teal-700">58 单</span>
-            <span className="text-[10px] text-slate-400">/ 60单 (96.6%)</span>
-          </div>
-
-          <div className="flex items-center gap-1.5 border-l border-slate-200 pl-3" title="平均会话处理时长 (Average Handling Time)">
-            <span className="text-slate-500">AHT:</span>
-            <span className="font-mono font-bold text-emerald-700">5.9 分钟</span>
-            <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-1 rounded border border-emerald-200">
-              -26% 降本
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5 border-l border-slate-200 pl-3" title="AI回复草稿一线采纳率 (Adoption Rate)">
-            <span className="text-slate-500">AI采纳率:</span>
-            <span className="font-mono font-bold text-teal-700">
-              {((adoptedCount / Math.max(totalSuggestions, 1)) * 100).toFixed(1)}%
-            </span>
-            <span className="text-[10px] text-slate-400">({adoptedCount}/{totalSuggestions})</span>
-          </div>
-
-          <div className="flex items-center gap-1.5 border-l border-slate-200 pl-3" title="首响时长 (First Response Time)">
-            <span className="text-slate-500">首响 FRT:</span>
-            <span className="font-mono font-bold text-sky-700">1.6 分钟</span>
-            <span className="text-[10px] text-sky-600 font-medium">合规</span>
           </div>
         </div>
 
@@ -299,14 +254,6 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             );
           })}
-        </div>
-
-        {/* Quick Help / Architecture Badge on Right of Navigation */}
-        <div className="hidden md:flex items-center gap-2 text-slate-500 text-[11px] py-1.5">
-          <span className="inline-flex items-center gap-1 font-mono text-[10px] px-2 py-0.5 rounded bg-slate-50 border border-slate-200 text-slate-600">
-            <Sparkles className="w-2.5 h-2.5 text-teal-600" />
-            Dify + BGE多语言向量 + DeepSeek-V3 / Qwen-Max
-          </span>
         </div>
       </div>
     </header>
